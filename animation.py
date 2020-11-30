@@ -1,25 +1,22 @@
+from guy import Guy
 import sys
 import pygame
-from pygame import image
 import glob
+from pygame import image
 import pygame.display
 import pygame.image
 import pygame.draw
 import pygame.event
+from settings import Settings
+from guy import Guy
 
 
 pygame.init()
 screen = pygame.display.set_mode((500, 500))
 
-# Read the images
-walk_right = [
-    pygame.image.load(img).convert_alpha() for img in glob.glob('images/R*.png')
-]
-walk_left = [
-    pygame.image.load(img).convert_alpha() for img in glob.glob('images/L*.png')
-]
+
 bg = pygame.image.load('images/bg.jpg').convert_alpha()
-char = pygame.image.load('images/standing.png').convert_alpha()
+
 
 
 X = 50
@@ -42,14 +39,28 @@ def redraw_game_window():
     pygame.draw.rect(screen, (255, 0, 0), (X, Y, CHA_WIDTH, CHA_HEIGTH))
     pygame.display.update()
 
+settings = Settings()
+
+guy = Guy(settings)
 # Main loop
 while True:
     # Get event
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+        # Check key down event
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                
-
+                guy.moving_left == True
+            elif event.key == pygame.K_RIGHT:
+                guy.moving_right == True
+        # Check key up event
+        elif event.type == pygame.K_UP:
+            if event.key == pygame.K_LEFT:
+                guy.moving_left == False
+            elif event.key == pygame.K_RIGHT:
+                guy.moving_right == False
+    
+    guy.update()
+    redraw_game_window()
 
