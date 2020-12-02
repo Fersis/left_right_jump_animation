@@ -1,4 +1,3 @@
-import sys
 import pygame
 import pygame.display
 import pygame.image
@@ -14,15 +13,12 @@ pygame.init()
 
 clock = Clock()
 screen = pygame.display.set_mode((852, 480))
-
 bg = pygame.image.load('images/bg.jpg').convert_alpha()
+settings = Settings()
+guy = Guy(settings, screen)
 
 IS_JUMP = False
 JUMP_COUNT = 10
-
-settings = Settings()
-
-guy = Guy(settings, screen)
 
 # Main loop
 while True:

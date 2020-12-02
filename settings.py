@@ -5,4 +5,4 @@ class Settings():
     """
     def __init__(self):
         # Character settings
-        self.walk_speed = 5
+        self.walk_speed = 10

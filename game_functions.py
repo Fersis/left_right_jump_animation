@@ -1,18 +1,6 @@
 import sys
 import pygame.display
 
-def update_screen(screen, bg, guy):
-    """
-    Redraw the game window with 
-    """
-
-    screen.blit(bg, (0, 0))
-
-    #screen.fill((0, 0, 0))
-    #pygame.draw.rect(screen, (255, 0, 0), (X, Y, CHA_WIDTH, CHA_HEIGTH))
-    guy.blitme()
-    pygame.display.update()
-
 def check_event(guy):
     # Get event
     for event in pygame.event.get():
@@ -31,5 +19,18 @@ def check_event(guy):
             elif event.key == pygame.K_RIGHT:
                 guy.moving_right = False
 
+
 def update_guy(guy):
     guy.update()
+
+
+def update_screen(screen, bg, guy):
+    """
+    Redraw the game window with 
+    """
+
+    screen.blit(bg, (0, 0))
+
+    #pygame.draw.rect(screen, (255, 0, 0), (X, Y, CHA_WIDTH, CHA_HEIGTH))
+    guy.blitme()    
+    pygame.display.update()
