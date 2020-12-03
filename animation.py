@@ -22,7 +22,7 @@ JUMP_COUNT = 10
 
 # Main loop
 while True:
-    clock.tick(10)
+    clock.tick(20)
     
     check_event(guy)
 
