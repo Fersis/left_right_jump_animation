@@ -24,8 +24,6 @@ def check_event(guy):
                 guy.moving_right = False
             elif event.key == pygame.K_DOWN:
                 guy.down = False
-            elif event.key == pygame.K_SPACE:
-                guy.jump = False
 
 
 def update_guy(guy):

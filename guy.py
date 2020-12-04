@@ -43,12 +43,17 @@ class Guy(Sprite):
         Update walking images and position
         """
         # Jumping
-        if self.jump == True:
-            self.rect.bottom = self.screen_rect.bottom -10 + int(
-                self.settings.v0 * self.jump_time 
+        if self.jump == True:      
+            self.rect.bottom = self.screen_rect.bottom - 10 - int(
+                # Using the formula: h = v0t - gt^2/2
+                self.settings.v0 * self.jump_time
                 - 0.5 * self.settings.G * self.jump_time ** 2
             )
             self.jump_time += 1
+            if self.rect.bottom == self.screen_rect.bottom - 10:
+                self.jump = False
+                self.jump_time = 1
+
         # Face down
         if self.down == True:
             self.pre_walking_right = 'down'
